@@ -21,7 +21,6 @@
 
 # #alter table product add column quentity varchar(50)
 
-# alter table product MODIFY column id PRIMARY;
 
 # #alter table product drop column quentity
 
@@ -32,3 +31,17 @@
 # values 
 # (3, "dell laptop", "this is dell laptop", 300),
 # (4, "hp laptop", "this is hp laptop", 400);
+# DROP table category;
+# alter table product Add PRIMARY key(id);
+# WHERE 
+# SELECT id, title, price from product WHERE price > 350;
+#SELECT id, title, description, price from product;
+# *
+# select * from product WHERE title="hp laptop";
+# update and delete
+# update product SET price = 500 where id = 2; 
+# delete
+#DELETE from product where id = 2;
+
+
+
