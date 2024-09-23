@@ -1,14 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <a href="{% url 'home' %}">Home page</a>
-    <a href="{% url 'blog' %}">Blog page</a>
-    <a href="{% url 'about' %}">About page</a>
-    <a href="{% url 'contact' %}">Contact page</a>
+<body class="container mx-auto">
+    <header class="no-underline text-xl text-white flex gap-5 ">
+        <a href="{% url 'home' %}" style="color: green; text-decoration: none;">Home page</a>
+        <a href="{% url 'blog' %}" >Blog page</a>
+        <a href="{% url 'about' %}">About page</a>
+        <a href="{% url 'contact' %}">Contact page</a>
+    </header>
+    <img class="w-25 h-[250px]" src="https://images.unsplash.com/photo-1723408020169-9ed1e5eac4d3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8" alt="">
+    <img class="w-[350px] h-[250px]" src="{% static 'img/img1.jpg' %}" alt="">
+    <!-- blog data -->
+    {% for blog in blogs %}
+        <h1>{blogs.title}</h1>
+    {% endfor %}
+    <footer class="text-xl text-red-500 ">
+        <h1>Developed by Shishir Bhandari</h1>
+    </footer>
+
+    <script src="{% static 'js/script.js'%}"></script>
+    
 </body>
 </html>
