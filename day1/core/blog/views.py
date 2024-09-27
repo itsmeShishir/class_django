@@ -14,5 +14,11 @@ def Home(request):
 def Contact(request):
     redirect('home')
 
+def index(request):
+    context = {
+        "name":"shishir"
+    }
+    return render(request, "user/index.html", context)
 
-
+def about(request):
+    return render(request, "user/about.html")
