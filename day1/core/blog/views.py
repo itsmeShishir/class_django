@@ -1,14 +1,19 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from .models import Blog, BlogCategory
 # Create your views here.
-
 # 2 type of views-> 
 # 1. function base views -> use decorator
 # 2. class base views -> use metaclass
 
 def Home(request):
-    return HttpResponse("Hello from http Response home page")
+    blog = Blog.objects.all()
+    category = BlogCategory.objects.all()
+    context = {
+        "category": category,
+        "blog": blog
+    }
+    return render(request, "user/index.html", context)
 
 #TODO
 def Contact(request):
@@ -22,3 +27,11 @@ def index(request):
 
 def about(request):
     return render(request, "user/about.html")
+
+def single_blog(request, pk):
+    blog = Blog.objects.get(id=pk)
+    print(blog)
+    context = {
+        "blog": blog
+    }
+    return render(request, "user/singleblog.html", context)
