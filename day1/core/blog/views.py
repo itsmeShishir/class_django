@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+from .forms import CategoryForm
 from .models import Blog, BlogCategory
+
 # Create your views here.
 # 2 type of views-> 
 # 1. function base views -> use decorator
@@ -31,3 +34,19 @@ def single_blog(request, pk):
         "blog": blog
     }
     return render(request, "user/singleblog.html", context)
+
+def AddCategory(request):
+    if request.method == "POST":
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            category_name = form.cleaned_data["category_name"]
+            category_img = form.cleaned_data["category_img"]
+            BlogCategory.objects.create(category_name = category_name, category_img = category_img)
+            return redirect('success')
+    else:   
+        form = CategoryForm()
+
+    context = {
+        "form": form
+    }
+    return render(request, "admin/addcateogry.html", context)

@@ -1,0 +1,24 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block content %}
+<h1>Add Category </h1>
+<form method="POST" enctype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <div>
+        <label for="category_name">Category Name</label>
+        <input type="text" name="category_name" value={{form.category_name.value}} 
+        placeholder="Category Name">
+        {% if form.category_name.errors %}
+        <div class="error">{{form.category_name.errors.0}}</div>
+        {%endif%}
+    </div>
+     <div>
+        <label for="category_img">Category img</label>
+        <input type="file" name="category_img" value={{form.category_img.value}>
+         {% if form.category_img.errors %}
+        <div class="error">{{form.category_img.errors.0}}</div>
+        {%endif%}
+    </div>
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
