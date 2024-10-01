@@ -15,10 +15,6 @@ def Home(request):
     }
     return render(request, "user/index.html", context)
 
-#TODO
-def Contact(request):
-    redirect('home')
-
 def index(request):
     context = {
         "name":"shishir"

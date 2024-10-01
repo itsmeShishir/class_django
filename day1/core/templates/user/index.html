@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
 {% load static %}
+{%block title%} HOME {%endblock%}
 {% block content %}
 
 
@@ -53,6 +54,29 @@
         </span>
     </button>
 </div>
+<!-- card start here -->
+ <section class="container mx-auto">
+    <h1 class="text-center text-3xl">This is list of blogs</h1>
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for a in blog %}
+    <div
+      class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4 ">
+      <div class="min-h-[256px]">
+        <img src={{a.blog_img.url}} class="w-[250px] object-contain" />
+      </div>
+
+      <div class="p-6">
+        <h3 class="text-gray-800 text-xl font-bold">{{a.title}}</h3>
+        <p class="mt-4 text-sm text-gray-500 leading-relaxed mb-4">{{a.description}}</p>
+        <a href="{% url 'singleblog' a.id%}"
+          class="mt-6 px-5 py-2.5 rounded-lg text-white text-sm tracking-wider border-none outline-none bg-blue-600 hover:bg-blue-700 active:bg-blue-600">View</a>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+</section>
+
+ </div>
 
 <h1>THis is category blogs</h1>
 {% for cat in category%}
