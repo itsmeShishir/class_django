@@ -30,3 +30,17 @@ def messageSuccess(request):
 
 def messageError(request):
     return render(request, "message/error.html")
+
+def AdminContact(request):
+    contact = Contact.objects.all()
+    return render(request, "admin/allcontact.html", {"contact": contact})
+
+def DeleteContact(request, pk):
+     if request.method == "POST":
+         contact = Contact.objects.get(id=pk)
+         contact.delete()
+         return redirect("admincontact")
+     else:
+         pass
+    
+        

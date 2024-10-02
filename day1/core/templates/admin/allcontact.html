@@ -1,0 +1,31 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block content %}
+<section class="container mx-auto">
+    <h1>All Contact </h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Actions</th>
+        </tr>
+        {% for contacts in contact %}
+        <tr>
+            <td>{{contacts.full_name}}</td>
+            <td>{{contacts.email}}</td>
+            <td>{{contacts.phone}}</td>
+            <td>{{contacts.message}}</td>
+            <td>
+                <div class="flex ">
+                    <a href="#">Update</a>
+                    <a href="#">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+    
+{% endblock %}

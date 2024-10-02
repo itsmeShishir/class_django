@@ -4,5 +4,7 @@ urlpatterns = [
     path('', Home, name="home"),
     path("about", about, name="about"),
     path("singleblog/<int:pk>", single_blog, name="singleblog"),
-    path('addcategory', AddCategory, name="addcategory")
+    path('addcategory', AddCategory, name="addcategory"),
+    path("login", Login, name="login"),
+    path("resgister", Register, name="register"),
 ]

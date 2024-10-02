@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title%}
+    Login page
+{% endblock%}
+{% block content %}
+   <div class="container mx-auto flex justify-center h-full items-center">
+       <div>
+        <h1>this is a login page</h1>
+       <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div>
+            <label for="Username" class="block">Username</label>
+            <input type="text" name="username" value={{form.username.value}}>
+            {% if form.username.errors %}
+            <div class="error">{{form.username.errors.0}}</div>
+            {%endif%}
+        </div>
+        <div>
+            <label for="password" class="block">Password</label>
+            <input type="text" name="password" value={{form.password.value}}>
+            {% if form.password.errors %}
+            <div class="error">{{form.password.errors.0}}</div>
+            {%endif%}
+        </div>
+        <div><button type="submit">Submit</button></div>
+        
+       </form>
+       </div>
+   </div>
+{% endblock %}

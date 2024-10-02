@@ -50,3 +50,37 @@ def AddCategory(request):
         "form": form
     }
     return render(request, "admin/addcateogry.html", context)
+
+#login
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+def Login(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = authenticate(username = username, password = password)
+            if user is not None:
+                login(request, user)
+            return redirect('home')
+    else:   
+        pass
+   
+    return render(request, "auth/login.html")
+
+from .forms import RegisterForm
+def Register(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:   
+        form = RegisterForm()
+   
+    return render(request, "auth/register.html", {"form": form})
+
+
+

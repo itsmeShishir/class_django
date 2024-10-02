@@ -6,4 +6,5 @@ urlpatterns = [
    path('listcontact', listContact, name="contact-list"),
    path('messagesuccess', messageSuccess, name="success"),
    path('messageerror', messageError, name="error"),
+   path('admincontact', AdminContact, name="admincontact"),
 ]
