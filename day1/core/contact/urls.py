@@ -7,4 +7,6 @@ urlpatterns = [
    path('messagesuccess', messageSuccess, name="success"),
    path('messageerror', messageError, name="error"),
    path('admincontact', AdminContact, name="admincontact"),
+   path('deletecontact/<int:id>', DeleteContact, name="deletecontact"),
+   path('updatecontact/<int:id>', UpdateContact, name="updatecontact"),
 ]

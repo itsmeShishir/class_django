@@ -19,8 +19,11 @@
             <td>{{contacts.message}}</td>
             <td>
                 <div class="flex ">
-                    <a href="#">Update</a>
-                    <a href="#">Delete</a>
+                    <a href="{% url 'updatecontact' id=contacts.id %}">Update</a>
+                    <form method="POST" action={%  url "deletecontact" id=contacts.id %}>
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
                 </div>
             </td>
         </tr>
